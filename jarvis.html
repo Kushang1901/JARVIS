@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JARVIS AI Assistant</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css" />
+    <link rel="icon" href="favicon.png" />
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="main-wrapper">
+
+            <div class="jarvis-panel">
+                <div class="orb-container">
+                    <div class="orb"></div>
+                </div>
+
+                <div class="waveform">
+                    <div class="wave-bar"></div>
+                    <div class="wave-bar"></div>
+                    <div class="wave-bar"></div>
+                    <div class="wave-bar"></div>
+                    <div class="wave-bar"></div>
+                    <div class="wave-bar"></div>
+                    <div class="wave-bar"></div>
+                    <div class="wave-bar"></div>
+                </div>
+
+                <div class="status-text" id="statusText">Idle</div>
+
+                <button class="mic-button" id="micButton">
+                    <i class="fas fa-microphone"></i>
+                </button>
+                <div class="voice-controls" id="voiceControls">
+                    <button class="voice-btn" id="pauseSpeechBtn" title="Pause speech">
+                        <i class="fas fa-pause"></i>
+                    </button>
+
+                    <button class="voice-btn" id="resumeSpeechBtn" title="Resume speech">
+                        <i class="fas fa-play"></i>
+                    </button>
+
+                    <button class="voice-btn danger" id="stopSpeechBtn" title="Stop speech">
+                        <i class="fas fa-stop"></i>
+                    </button>
+                </div>
+
+            </div>
+            
+
+
+            <div class="chat-panel">
+
+                <video class="chat-bg-video" autoplay muted loop playsinline>
+                    <source src="bg-video.mp4" type="video/mp4">
+                </video>
+                <div class="chat-bg-overlay"></div>
+
+                <div class="chat-header">
+                    <h3><i class="fas fa-comments"></i> Chat Interface</h3>
+                    <button class="clear-btn" id="clearBtn">
+                        <i class="fas fa-trash"></i> Clear Chat
+                    </button>
+                </div>
+
+                <div class="chat-container" id="chatContainer">
+                    <div class="message jarvis">
+                        <div class="message-bubble">
+                            Hello! I'm JARVIS, your AI assistant. How may I assist you today?
+                        </div>
+                    </div>
+                </div>
+
+                <div class="chat-input-container">
+                    <input type="text"
+                           class="chat-input"
+                           id="chatInput"
+                           placeholder="Type your message...">
+                    <button class="send-btn" id="sendBtn">
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
