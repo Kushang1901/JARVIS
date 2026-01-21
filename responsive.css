@@ -1,0 +1,510 @@
+/* ============================================
+   RESPONSIVE MEDIA QUERIES FOR JARVIS AI
+   ============================================ */
+
+/* Large Tablets and Small Laptops (max-width: 1200px) */
+@media (max-width: 1200px) {
+    .orb {
+        width: 160px;
+        height: 160px;
+    }
+
+    .status-text {
+        font-size: 1.3rem;
+    }
+
+    .mic-button {
+        width: 70px;
+        height: 70px;
+        font-size: 1.8rem;
+    }
+
+    .message-bubble {
+        max-width: 75%;
+    }
+}
+
+/* Tablets (max-width: 992px) */
+@media (max-width: 992px) {
+    .main-wrapper {
+        flex-direction: column;
+    }
+
+    .jarvis-panel {
+        position: relative;
+        height: auto;
+        min-height: 60vh;
+        border-right: none;
+        border-bottom: 1px solid rgba(0, 255, 255, 0.1);
+        padding: 30px 20px;
+    }
+
+    .chat-panel {
+        min-height: 60vh;
+    }
+
+    .orb {
+        width: 140px;
+        height: 140px;
+    }
+
+    .waveform {
+        height: 50px;
+        margin-bottom: 25px;
+    }
+
+    .status-text {
+        font-size: 1.2rem;
+        margin-bottom: 30px;
+    }
+
+    .mic-button {
+        width: 65px;
+        height: 65px;
+        font-size: 1.6rem;
+    }
+
+    .voice-controls {
+        margin-top: 15px;
+        gap: 12px;
+    }
+
+    .voice-btn {
+        width: 48px;
+        height: 48px;
+    }
+
+    .chat-header {
+        padding: 18px 25px;
+    }
+
+    .chat-header h3 {
+        font-size: 1.1rem;
+    }
+
+    .chat-container {
+        padding: 25px 20px;
+    }
+
+    .message-bubble {
+        max-width: 80%;
+        padding: 12px 18px;
+    }
+
+    .chat-input-container {
+        padding: 18px 25px;
+    }
+
+    .chat-input {
+        font-size: 0.95rem;
+        padding: 10px 18px;
+    }
+
+    .send-btn {
+        width: 45px;
+        height: 45px;
+        font-size: 1.1rem;
+    }
+}
+
+/* Small Tablets and Large Phones (max-width: 768px) */
+@media (max-width: 768px) {
+    .jarvis-panel {
+        min-height: 50vh;
+        padding: 25px 15px;
+    }
+
+    .jarvis-panel::before {
+        width: 350px;
+        height: 350px;
+    }
+
+    .orb-container {
+        margin-bottom: 35px;
+    }
+
+    .orb {
+        width: 120px;
+        height: 120px;
+    }
+
+    .waveform {
+        height: 45px;
+        margin-bottom: 20px;
+        gap: 3px;
+    }
+
+    .wave-bar {
+        width: 3px;
+    }
+
+    @keyframes waveAnimation {
+        0%, 100% {
+            height: 8px;
+        }
+        50% {
+            height: 40px;
+        }
+    }
+
+    .status-text {
+        font-size: 1.1rem;
+        margin-bottom: 25px;
+        letter-spacing: 1.5px;
+    }
+
+    .mic-button {
+        width: 60px;
+        height: 60px;
+        font-size: 1.5rem;
+    }
+
+    .voice-controls {
+        margin-top: 12px;
+        gap: 10px;
+    }
+
+    .voice-btn {
+        width: 44px;
+        height: 44px;
+        font-size: 0.95rem;
+    }
+
+    .chat-header {
+        padding: 15px 20px;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .chat-header h3 {
+        font-size: 1rem;
+    }
+
+    .clear-btn {
+        padding: 6px 14px;
+        font-size: 0.85rem;
+    }
+
+    .chat-container {
+        padding: 20px 15px;
+        gap: 15px;
+    }
+
+    .message-bubble {
+        max-width: 85%;
+        padding: 10px 16px;
+        font-size: 0.95rem;
+    }
+
+    .chat-input-container {
+        padding: 15px 20px;
+        gap: 12px;
+    }
+
+    .chat-input {
+        font-size: 0.9rem;
+        padding: 10px 16px;
+    }
+
+    .send-btn {
+        width: 42px;
+        height: 42px;
+        font-size: 1rem;
+    }
+
+    .code-block {
+        margin-top: 10px;
+        padding: 12px 14px;
+        font-size: 0.85rem;
+    }
+}
+
+/* Mobile Phones (max-width: 576px) */
+@media (max-width: 576px) {
+    body {
+        font-size: 14px;
+    }
+
+    .jarvis-panel {
+        min-height: 45vh;
+        padding: 20px 10px;
+    }
+
+    .jarvis-panel::before {
+        width: 300px;
+        height: 300px;
+    }
+
+    .orb-container {
+        margin-bottom: 25px;
+    }
+
+    .orb {
+        width: 100px;
+        height: 100px;
+    }
+
+    @keyframes orbPulse {
+        0%, 100% {
+            transform: scale(1);
+            box-shadow: 0 0 30px rgba(0, 255, 255, 0.5), 
+                        0 0 60px rgba(0, 255, 255, 0.3), 
+                        0 0 90px rgba(0, 255, 255, 0.15);
+        }
+        50% {
+            transform: scale(1.05);
+            box-shadow: 0 0 40px rgba(0, 255, 255, 0.7), 
+                        0 0 80px rgba(0, 255, 255, 0.5), 
+                        0 0 120px rgba(0, 255, 255, 0.3);
+        }
+    }
+
+    .waveform {
+        height: 40px;
+        margin-bottom: 18px;
+        gap: 2px;
+    }
+
+    .wave-bar {
+        width: 2.5px;
+    }
+
+    @keyframes waveAnimation {
+        0%, 100% {
+            height: 6px;
+        }
+        50% {
+            height: 35px;
+        }
+    }
+
+    .status-text {
+        font-size: 1rem;
+        margin-bottom: 20px;
+        letter-spacing: 1px;
+    }
+
+    .mic-button {
+        width: 55px;
+        height: 55px;
+        font-size: 1.3rem;
+    }
+
+    .voice-controls {
+        margin-top: 10px;
+        gap: 8px;
+    }
+
+    .voice-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 0.9rem;
+    }
+
+    .chat-header {
+        padding: 12px 15px;
+    }
+
+    .chat-header h3 {
+        font-size: 0.9rem;
+        letter-spacing: 1px;
+    }
+
+    .clear-btn {
+        padding: 5px 12px;
+        font-size: 0.8rem;
+        border-radius: 15px;
+    }
+
+    .chat-container {
+        padding: 15px 10px;
+        gap: 12px;
+    }
+
+    .message {
+        margin-bottom: 10px;
+    }
+
+    .message-bubble {
+        max-width: 90%;
+        padding: 10px 14px;
+        font-size: 0.9rem;
+        border-radius: 16px;
+    }
+
+    .chat-input-container {
+        padding: 12px 15px;
+        gap: 10px;
+    }
+
+    .chat-input {
+        font-size: 0.85rem;
+        padding: 10px 14px;
+        border-radius: 20px;
+    }
+
+    .send-btn {
+        width: 38px;
+        height: 38px;
+        font-size: 0.95rem;
+    }
+
+    .code-block {
+        margin-top: 8px;
+        padding: 10px 12px;
+        font-size: 0.8rem;
+        border-radius: 12px;
+    }
+
+    .chat-bg-video {
+        opacity: 0.25;
+        filter: blur(3px) brightness(1.8);
+    }
+}
+
+/* Extra Small Mobile Phones (max-width: 400px) */
+@media (max-width: 400px) {
+    .jarvis-panel {
+        min-height: 40vh;
+        padding: 15px 8px;
+    }
+
+    .orb {
+        width: 90px;
+        height: 90px;
+    }
+
+    .waveform {
+        height: 35px;
+        gap: 2px;
+    }
+
+    @keyframes waveAnimation {
+        0%, 100% {
+            height: 5px;
+        }
+        50% {
+            height: 30px;
+        }
+    }
+
+    .status-text {
+        font-size: 0.95rem;
+        margin-bottom: 18px;
+    }
+
+    .mic-button {
+        width: 50px;
+        height: 50px;
+        font-size: 1.2rem;
+    }
+
+    .voice-controls {
+        gap: 6px;
+    }
+
+    .voice-btn {
+        width: 36px;
+        height: 36px;
+        font-size: 0.85rem;
+    }
+
+    .chat-header h3 {
+        font-size: 0.85rem;
+    }
+
+    .clear-btn {
+        padding: 4px 10px;
+        font-size: 0.75rem;
+    }
+
+    .message-bubble {
+        max-width: 92%;
+        padding: 8px 12px;
+        font-size: 0.85rem;
+    }
+
+    .chat-input {
+        font-size: 0.8rem;
+        padding: 8px 12px;
+    }
+
+    .send-btn {
+        width: 36px;
+        height: 36px;
+        font-size: 0.9rem;
+    }
+
+    .code-block {
+        padding: 8px 10px;
+        font-size: 0.75rem;
+    }
+}
+
+/* Landscape Mode for Mobile Devices */
+@media (max-height: 600px) and (orientation: landscape) {
+    .jarvis-panel {
+        min-height: 100vh;
+        padding: 20px 15px;
+    }
+
+    .orb-container {
+        margin-bottom: 20px;
+    }
+
+    .orb {
+        width: 80px;
+        height: 80px;
+    }
+
+    .waveform {
+        height: 30px;
+        margin-bottom: 15px;
+    }
+
+    .status-text {
+        font-size: 0.9rem;
+        margin-bottom: 15px;
+    }
+
+    .mic-button {
+        width: 45px;
+        height: 45px;
+        font-size: 1.1rem;
+    }
+
+    .voice-controls {
+        margin-top: 8px;
+        gap: 6px;
+    }
+
+    .voice-btn {
+        width: 35px;
+        height: 35px;
+    }
+
+    .chat-container {
+        padding: 15px;
+    }
+}
+
+/* High DPI Screens */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .orb {
+        box-shadow: 0 0 50px rgba(0, 255, 255, 0.7), 
+                    0 0 100px rgba(0, 255, 255, 0.5), 
+                    0 0 150px rgba(0, 255, 255, 0.3);
+    }
+
+    .wave-bar {
+        box-shadow: 0 0 12px rgba(0, 255, 255, 0.6);
+    }
+}
+
+/* Dark Mode Preference */
+@media (prefers-color-scheme: light) {
+    /* Optional: Add light mode adjustments if needed */
+    .chat-bg-video {
+        opacity: 0.2;
+    }
+}
