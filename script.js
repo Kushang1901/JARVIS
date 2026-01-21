@@ -76,7 +76,8 @@ async function sendMessage() {
     statusText.textContent = "Thinking…";
 
     try {
-        const res = await fetch("http://localhost:3000/ask", {
+        const res = await fetch("https://jarvis-backend-dol8.onrender.com/ask", {
+
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ message })
