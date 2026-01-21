@@ -99,25 +99,123 @@ async function sendMessage() {
 
 
 
+function escapeHtml(str) {
+    return str.replace(/[&<>"']/g, (m) => ({
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        '"': "&quot;",
+        "'": "&#039;"
+    }[m]));
+}
+
+function formatJarvisMessage(text) {
+    // Convert ```lang ... ``` blocks into <pre><code>
+    const parts = text.split(/```/g);
+
+    // If no code blocks, just return text with line breaks
+    if (parts.length === 1) {
+        return `<div class="msg-text">${escapeHtml(text).replace(/\n/g, "<br>")}</div>`;
+    }
+
+    let html = "";
+
+    for (let i = 0; i < parts.length; i++) {
+        const chunk = parts[i];
+
+        if (i % 2 === 0) {
+            // normal text
+            if (chunk.trim() !== "") {
+                html += `<div class="msg-text">${escapeHtml(chunk).replace(/\n/g, "<br>")}</div>`;
+            }
+        } else {
+            // code block
+            const lines = chunk.split("\n");
+            const firstLine = lines[0].trim();
+            const looksLikeLang = /^[a-zA-Z]+$/.test(firstLine);
+
+            const code = looksLikeLang ? lines.slice(1).join("\n") : chunk;
+            const lang = looksLikeLang ? firstLine.toLowerCase() : "";
+
+            html += `
+                <pre class="code-block"><code class="lang-${lang}">${escapeHtml(code)}</code></pre>
+            `;
+        }
+    }
+
+    return html;
+}
+
+function escapeHtml(str) {
+    return str.replace(/[&<>"']/g, (m) => ({
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        '"': "&quot;",
+        "'": "&#039;"
+    }[m]));
+}
+
+function formatJarvisMessage(text) {
+    // Convert ```lang ... ``` blocks into <pre><code>
+    const parts = text.split(/```/g);
+
+    // If no code blocks, just return text with line breaks
+    if (parts.length === 1) {
+        return `<div class="msg-text">${escapeHtml(text).replace(/\n/g, "<br>")}</div>`;
+    }
+
+    let html = "";
+
+    for (let i = 0; i < parts.length; i++) {
+        const chunk = parts[i];
+
+        if (i % 2 === 0) {
+            // normal text
+            if (chunk.trim() !== "") {
+                html += `<div class="msg-text">${escapeHtml(chunk).replace(/\n/g, "<br>")}</div>`;
+            }
+        } else {
+            // code block
+            const lines = chunk.split("\n");
+            const firstLine = lines[0].trim();
+            const looksLikeLang = /^[a-zA-Z]+$/.test(firstLine);
+
+            const code = looksLikeLang ? lines.slice(1).join("\n") : chunk;
+            const lang = looksLikeLang ? firstLine.toLowerCase() : "";
+
+            html += `
+                <pre class="code-block"><code class="lang-${lang}">${escapeHtml(code)}</code></pre>
+            `;
+        }
+    }
+
+    return html;
+}
+
 function addMessage(text, sender) {
     const messageDiv = document.createElement('div');
     messageDiv.className = `message ${sender}`;
 
     const bubbleDiv = document.createElement('div');
     bubbleDiv.className = 'message-bubble';
-    bubbleDiv.textContent = text;
+
+    if (sender === "jarvis") {
+        bubbleDiv.innerHTML = formatJarvisMessage(text);
+    } else {
+        bubbleDiv.textContent = text;
+    }
 
     messageDiv.appendChild(bubbleDiv);
     chatContainer.appendChild(messageDiv);
-
 
     chatContainer.scrollTop = chatContainer.scrollHeight;
 
     if (sender === "jarvis") {
         speakText(text);
     }
-
 }
+
 
 
 sendBtn.addEventListener('click', sendMessage);
