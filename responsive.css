@@ -105,6 +105,13 @@
         height: 45px;
         font-size: 1.1rem;
     }
+
+    .chat-bg-video,
+    .chat-bg-overlay {
+        width: 100vw;
+        right: 0;
+        left: 0;
+    }
 }
 
 /* Small Tablets and Large Phones (max-width: 768px) */
