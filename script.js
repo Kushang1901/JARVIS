@@ -91,6 +91,12 @@ async function sendMessage() {
 
         addMessage(data.reply, "jarvis");
         statusText.textContent = "Idle";
+
+        // ✅ Open website if backend sends URL
+        if (data.openUrl) {
+            window.open(data.openUrl, "_blank");
+        }
+
     } catch (err) {
         addMessage("⚠️ Server error: " + err.message, "jarvis");
         statusText.textContent = "Idle";
