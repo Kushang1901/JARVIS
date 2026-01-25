@@ -206,21 +206,38 @@ function addMessage(text, sender) {
     const bubbleDiv = document.createElement('div');
     bubbleDiv.className = 'message-bubble';
 
-    if (sender === "jarvis") {
-        bubbleDiv.innerHTML = formatJarvisMessage(text);
-    } else {
-        bubbleDiv.textContent = text;
-    }
-
     messageDiv.appendChild(bubbleDiv);
     chatContainer.appendChild(messageDiv);
-
     chatContainer.scrollTop = chatContainer.scrollHeight;
 
     if (sender === "jarvis") {
+        typeWriterEffect(text, bubbleDiv);
         speakText(text);
+    } else {
+        bubbleDiv.textContent = text;
     }
 }
+// ✅ Typing Animation for Jarvis
+function typeWriterEffect(text, element) {
+    let index = 0;
+    element.innerHTML = "";
+
+    const speed = 25; // typing speed (ms)
+
+    function type() {
+        if (index < text.length) {
+            element.innerHTML += escapeHtml(text.charAt(index));
+            index++;
+
+            chatContainer.scrollTop = chatContainer.scrollHeight;
+
+            setTimeout(type, speed);
+        }
+    }
+
+    type();
+}
+
 
 
 
