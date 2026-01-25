@@ -362,3 +362,16 @@ setInterval(updateSystemStats, 10000);
 
 // Run on Load
 updateSystemStats();
+
+document.addEventListener('mousemove', (e) => {
+    const x = (e.clientX / window.innerWidth - 0.5) * 20;
+    const y = (e.clientY / window.innerHeight - 0.5) * 20;
+
+    const jarvisPanel = document.querySelector('.jarvis-panel');
+    const chatPanel = document.querySelector('.chat-panel');
+
+    if (window.innerWidth > 992) {
+        jarvisPanel.style.transform = `translateZ(20px) rotateY(${x * 0.3}deg) rotateX(${-y * 0.3}deg)`;
+        chatPanel.style.transform = `translateZ(10px) rotateY(${x * 0.2}deg) rotateX(${-y * 0.2}deg)`;
+    }
+});
