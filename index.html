@@ -6,17 +6,41 @@
     <title>JARVIS AI Assistant</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="responsive.css" />
     <link rel="icon" href="favicon.png" />
 </head>
 <body>
+    <!-- Animated Background -->
+    <div class="bg-grid"></div>
+    <div class="bg-gradient"></div>
+
     <div class="container-fluid">
         <div class="main-wrapper">
-
+            <!-- Left Panel - AI Core -->
             <div class="jarvis-panel">
+                <div class="terminal-header">
+                    <div class="terminal-buttons">
+                        <span class="terminal-btn close"></span>
+                        <span class="terminal-btn minimize"></span>
+                        <span class="terminal-btn maximize"></span>
+                    </div>
+                    <div class="terminal-title">
+                        <i class="fas fa-terminal"></i> AI_CORE.exe
+                    </div>
+                </div>
+
                 <div class="orb-container">
-                    <div class="orb"></div>
+                    <div class="orb-glow"></div>
+                    <div class="orb">
+                        <div class="orb-inner"></div>
+                        <div class="orb-ring"></div>
+                        <div class="orb-ring-2"></div>
+                    </div>
+                    <div class="scan-line"></div>
                 </div>
 
                 <div class="waveform">
@@ -30,66 +54,101 @@
                     <div class="wave-bar"></div>
                 </div>
 
-                <div class="status-text" id="statusText">Idle</div>
+                <div class="status-container">
+                    <div class="status-indicator"></div>
+                    <div class="status-text" id="statusText">Idle</div>
+                </div>
 
                 <button class="mic-button" id="micButton">
+                    <div class="mic-ripple"></div>
+                    <div class="mic-ripple"></div>
                     <i class="fas fa-microphone"></i>
                 </button>
+
                 <div class="voice-controls" id="voiceControls">
                     <button class="voice-btn" id="pauseSpeechBtn" title="Pause speech">
                         <i class="fas fa-pause"></i>
                     </button>
-
                     <button class="voice-btn" id="resumeSpeechBtn" title="Resume speech">
                         <i class="fas fa-play"></i>
                     </button>
-
                     <button class="voice-btn danger" id="stopSpeechBtn" title="Stop speech">
                         <i class="fas fa-stop"></i>
                     </button>
                 </div>
 
+                <div class="system-stats">
+                    <div class="stat-item">
+                        <span class="stat-label">LATENCY</span>
+                        <span class="stat-value" id="latencyStat">-- ms</span>
+                    </div>
+
+                    <div class="stat-item">
+                        <span class="stat-label">STATUS</span>
+                        <span class="stat-value" id="statusStat">CHECKING</span>
+                    </div>
+
+                    <div class="stat-item">
+                        <span class="stat-label">UPTIME</span>
+                        <span class="stat-value" id="uptimeStat">0%</span>
+                    </div>
+                </div>
+
             </div>
+
             
-
-
             <div class="chat-panel">
-
                 <video class="chat-bg-video" autoplay muted loop playsinline>
                     <source src="bg-video.mp4" type="video/mp4">
                 </video>
                 <div class="chat-bg-overlay"></div>
 
                 <div class="chat-header">
-                    <h3><i class="fas fa-comments"></i> Chat Interface</h3>
+                    <div class="header-left">
+                        <i class="fas fa-code"></i>
+                        <h3>JARVIS_TERMINAL</h3>
+                        <span class="header-path">~/workspace/chat</span>
+                    </div>
                     <button class="clear-btn" id="clearBtn">
-                        <i class="fas fa-trash"></i> Clear Chat
+                        <i class="fas fa-trash-alt"></i>
+                        <span>Clear</span>
                     </button>
                 </div>
 
                 <div class="chat-container" id="chatContainer">
                     <div class="message jarvis">
+                        <div class="message-header">
+                            <span class="message-user">jarvis@ai</span>
+                            <span class="message-time">system</span>
+                        </div>
                         <div class="message-bubble">
-                            Hello! I'm JARVIS, your AI assistant. How may I assist you today?
+                            <span class="prompt-symbol">$</span>
+                            <span class="message-text">Hello! I'm JARVIS, your AI assistant. How may I assist you today?</span>
                         </div>
                     </div>
                 </div>
 
                 <div class="chat-input-container">
-                    <input type="text"
-                           class="chat-input"
-                           id="chatInput"
-                           placeholder="Type your message...">
-                    <button class="send-btn" id="sendBtn">
-                        <i class="fas fa-paper-plane"></i>
-                    </button>
+                    <div class="input-wrapper">
+                        <span class="input-prompt">
+                            <i class="fas fa-angle-right"></i>
+                        </span>
+                        <input type="text"
+                               class="chat-input"
+                               id="chatInput"
+                               placeholder="Enter command or message...">
+                        <button class="send-btn" id="sendBtn">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
                 </div>
 
                 <div class="chat-footer">
-                    <p class="chat-footer-line">Think Smarter Work Smarter - Life will be Easy</p>
-
+                    <p class="chat-footer-line">
+                        <i class="fas fa-code"></i> Think Smarter • Work Smarter • Code Better
+                    </p>
                     <p class="chat-footer-copy">
-                        © <span id="year"></span> Jarvis AI Theme | Developed by
+                        © <span id="year"></span> JARVIS AI Terminal | Developed by
                         <a href="https://kushangacharya.vercel.app" target="_blank">Kushang Acharya</a>
                     </p>
                 </div>

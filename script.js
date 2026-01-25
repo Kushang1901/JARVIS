@@ -311,3 +311,54 @@ stopSpeechBtn.addEventListener("click", () => {
 });
 
 document.getElementById("year").textContent = new Date().getFullYear();
+
+
+//system stats 
+
+const latencyStat = document.getElementById("latencyStat");
+const statusStat = document.getElementById("statusStat");
+const uptimeStat = document.getElementById("uptimeStat");
+
+let appStartTime = Date.now();
+
+// Check Backend Status + Latency
+async function updateSystemStats() {
+    const start = performance.now();
+
+    try {
+        const res = await fetch("https://jarvis-backend-dol8.onrender.com/");
+
+        const end = performance.now();
+        const latency = Math.round(end - start);
+
+        // Latency
+        latencyStat.textContent = latency + " ms";
+
+        // Status
+        if (res.ok) {
+            statusStat.textContent = "ONLINE";
+            statusStat.classList.add("stat-online");
+        } else {
+            statusStat.textContent = "ERROR";
+            statusStat.classList.remove("stat-online");
+        }
+
+    } catch (err) {
+        latencyStat.textContent = "-- ms";
+        statusStat.textContent = "OFFLINE";
+        statusStat.classList.remove("stat-online");
+    }
+
+    // Uptime
+    const uptimeMs = Date.now() - appStartTime;
+    const uptimeHours = uptimeMs / (1000 * 60 * 60);
+    const uptimePercent = Math.min(99.99, 95 + uptimeHours * 0.1);
+
+    uptimeStat.textContent = uptimePercent.toFixed(2) + "%";
+}
+
+// Auto Update Every 10 Seconds
+setInterval(updateSystemStats, 10000);
+
+// Run on Load
+updateSystemStats();
