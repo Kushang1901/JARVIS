@@ -211,12 +211,20 @@ function addMessage(text, sender) {
     chatContainer.scrollTop = chatContainer.scrollHeight;
 
     if (sender === "jarvis") {
-        typeWriterEffect(text, bubbleDiv);
+
+        const formatted = formatJarvisMessage(text);
+
+        // ✅ Fast typing with formatting
+        typeWriterFormatted(formatted, bubbleDiv, 6);
+
         speakText(text);
+
     } else {
         bubbleDiv.textContent = text;
     }
 }
+
+
 // ✅ Typing Animation for Jarvis
 function typeWriterEffect(text, element) {
     let index = 0;
@@ -238,6 +246,23 @@ function typeWriterEffect(text, element) {
     type();
 }
 
+function typeWriterFormatted(html, element, speed = 8) {
+    let i = 0;
+    element.innerHTML = "";
+
+    function type() {
+        if (i < html.length) {
+            element.innerHTML = html.slice(0, i + 1);
+            i++;
+
+            chatContainer.scrollTop = chatContainer.scrollHeight;
+
+            setTimeout(type, speed);
+        }
+    }
+
+    type();
+}
 
 
 

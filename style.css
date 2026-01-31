@@ -993,6 +993,22 @@ body {
     }
 }
 
+.code-block {
+    background: #0f172a;
+    color: #e5e7eb;
+    padding: 15px;
+    border-radius: 8px;
+    overflow-x: auto;
+    font-family: Consolas, monospace;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+    .code-block code {
+        white-space: pre;
+    }
+
+
 /* Responsive 3D Design */
 @media (max-width: 1200px) {
     .jarvis-panel {
